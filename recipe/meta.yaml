@@ -39,6 +39,10 @@ about:
   license_family: BSD
   license_file: LICENSE.txt
   summary: fsspec-compatible Azure Datalake and Azure Blob Storage access
+  description: |
+    adlfs is an fsspec-compatible filesystem interface to Azure Data Lake Storage
+    Gen2 and Azure Blob Storage, allowing fsspec-aware libraries to read and write
+    data stored in Azure using familiar filesystem semantics.
   doc_url: https://github.com/dask/adlfs
   dev_url: https://github.com/dask/adlfs
 
