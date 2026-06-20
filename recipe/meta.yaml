@@ -20,7 +20,6 @@ requirements:
     # package reports version 0.0.0
     - setuptools >=69
     - setuptools_scm >=8
-    - toml
   run:
     - python
     - aiohttp >=3.7.0
@@ -38,7 +37,7 @@ test:
     - pip
 
 about:
-  home: https://github.com/dask/adlfs
+  home: https://github.com/fsspec/adlfs
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
@@ -47,8 +46,8 @@ about:
     adlfs is an fsspec-compatible filesystem interface to Azure Data Lake Storage
     Gen2 and Azure Blob Storage, allowing fsspec-aware libraries to read and write
     data stored in Azure using familiar filesystem semantics.
-  doc_url: https://github.com/dask/adlfs
-  dev_url: https://github.com/dask/adlfs
+  doc_url: https://github.com/fsspec/adlfs
+  dev_url: https://github.com/fsspec/adlfs
 
 extra:
   recipe-maintainers:
