@@ -1,40 +1,53 @@
-{% set version = "2023.1.0" %}
+{% set version = "2026.5.0" %}
 
 package:
   name: adlfs
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/a/adlfs/adlfs-{{ version }}.tar.gz
-  sha256: eca53f53d88fc8e2e7a2f1d8f5a40b8a1c56aa3b541e4aa2e7eaf55a6a789262
+  url: https://pypi.org/packages/source/a/adlfs/adlfs-{{ version }}.tar.gz
+  sha256: abb24e3afba57c6766799514b6f12b65b577d4946254961c15cef71e5b51f374
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - python >=3.8
+    - python
     - pip
+    # setuptools_scm infers the version dynamically; without it the installed
+    # package reports version 0.0.0
+    - setuptools >=69
+    - setuptools_scm >=8
   run:
-    - python >=3.8
+    - python
     - aiohttp >=3.7.0
-    - azure-core >=1.23.1,<2.0
-    - azure-datalake-store >=0.0.46,<0.1
+    - azure-core >=1.28.0,<2.0.0
     - azure-identity
-    - azure-storage-blob >=12.12.0
-    - fsspec >=2021.10.1
+    - azure-storage-blob >=12.17.0
+    - fsspec >=2023.12.0
 
 test:
   imports:
     - adlfs
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
-  home: https://github.com/dask/adlfs
+  home: https://github.com/fsspec/adlfs
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE.txt
   summary: fsspec-compatible Azure Datalake and Azure Blob Storage access
+  description: |
+    adlfs is an fsspec-compatible filesystem interface to Azure Data Lake Storage
+    Gen2 and Azure Blob Storage, allowing fsspec-aware libraries to read and write
+    data stored in Azure using familiar filesystem semantics.
+  doc_url: https://github.com/fsspec/adlfs
+  dev_url: https://github.com/fsspec/adlfs
 
 extra:
   recipe-maintainers:
